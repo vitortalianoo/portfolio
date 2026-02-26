@@ -238,11 +238,12 @@ img {
 .slides img {
     width: 100%;
     height: auto;
-    flex-shrink: 0;
-    padding: 5px;
-    display: block;
-    max-width: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+    transition: transform 0.35s ease;
+}
+.slides img:hover {
+    transform: scale(1.05);
 }
 button {
     position: absolute;

@@ -1,25 +1,29 @@
-const elemSlides = document.querySelector(".slides")
-const elemBotaoEsquerdo = document.querySelector(".esquerda")
-const elemBotaoDireito = document.querySelector(".direita")
-const elemImagem = document.querySelectorAll(".slides img")
+const carrosseis = document.querySelectorAll(".carrossel");
 
-const tamLista = elemImagem.length - 1
+carrosseis.forEach((carrossel) => {
 
-let indice = 0
+    const slides = carrossel.querySelector(".slides");
+    const btnEsquerda = carrossel.querySelector(".esquerda");
+    const btnDireita = carrossel.querySelector(".direita");
+    const imagens = carrossel.querySelectorAll("img");
 
-elemBotaoEsquerdo.addEventListener("click", () => {
-    indice--
-    if (indice < 0) indice = tamLista
-    atualizarCarrossel()
-    console.log(indice)
-})
-elemBotaoDireito.addEventListener("click", () => {
-    indice++
-    if (indice > tamLista) indice = 0
-    atualizarCarrossel()
-    console.log(indice)
-})
+    const tamLista = imagens.length - 1;
+    let indice = 0;
 
-const atualizarCarrossel = () => {
-    elemSlides.style.transform = `translateX(-${indice * 100}%)`
-}
+    const atualizarCarrossel = () => {
+        slides.style.transform = `translateX(-${indice * 100}%)`;
+    };
+
+    btnEsquerda.addEventListener("click", () => {
+        indice--;
+        if (indice < 0) indice = tamLista;
+        atualizarCarrossel();
+    });
+
+    btnDireita.addEventListener("click", () => {
+        indice++;
+        if (indice > tamLista) indice = 0;
+        atualizarCarrossel();
+    });
+
+});
