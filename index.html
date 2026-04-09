@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de Vitor Taliano Beiral, desenvolvedor em formação com projetos em HTML, CSS, JavaScript e Python.">
     <title>Portfólio Vitor Taliano</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -15,7 +16,7 @@
                 <li><a href="#skills" class="link"><i class="fa-solid fa-house"></i></a></li>
                 <li><a href="#formacao" class="link"><i class="fa-solid fa-graduation-cap"></i></a></li>
                 <li><a href="#projetos" class="link"><i class="fa-solid fa-trowel-bricks"></i></a></li>
-                <li><a href="#" class="link" id="botao-tema"><i class="fa-solid fa-moon"></i></a></li>
+                <li><a href="#" id="botao-tema"><i class="fa-solid fa-moon"></i></a></li>
             </ul>
         </nav>
         
@@ -25,17 +26,17 @@
         <section id="ficha">
             <img src="img/fotoPerfil.jpg" alt="Vitor Taliano" class="foto">
             <h1>Vitor Taliano Beiral</h1>
-            <p>
+            <p class="apresentacao">
                 Formado em Técnico em Desenvolvimento de Sistemas,
                  estou iniciando minha trajetória no desenvolvimento web,
                   com conhecimentos em Python, HTML, CSS, JavaScript e bancos de dados relacionais.
                    Em constante aprendizado, busco uma oportunidade para aplicar e expandir minhas habilidades.
-                <div id="social">
-                    <a href="https://www.linkedin.com/in/vitor-taliano-a2343129a/" target="_blank" rel="nofollow"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://github.com/vitortalianoo" target="_blank" rel="nofollow"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://www.instagram.com/v_taliano?igsh=MXczb2g0a2Rvajd4NQ%3D%3D&utm_source=qr" target="_blank" rel="nofollow"><i class="fa-brands fa-instagram"></i></a>
-                </div>
             </p>
+            <div id="social">
+                <a href="https://www.linkedin.com/in/vitor-taliano-a2343129a/" target="_blank" rel="noopener noreferrer nofollow"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/vitortalianoo" target="_blank" rel="noopener noreferrer nofollow"><i class="fa-brands fa-github"></i></a>
+                <a href="https://www.instagram.com/v_taliano?igsh=MXczb2g0a2Rvajd4NQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer nofollow"><i class="fa-brands fa-instagram"></i></a>
+            </div>
         </section>
         <section id="detalhes">
             <article id="skills">
@@ -129,8 +130,17 @@
 
             <article id="projetos">
                 <h2><i class="fa-solid fa-trowel-bricks"></i> Projetos</h2>
+                <div class="projeto-acoes">
+                    <input type="search" id="busca-projeto" placeholder="Buscar projeto por nome..." aria-label="Buscar projeto por nome">
+                    <div class="filtros" id="filtros-projeto">
+                        <button type="button" class="filtro-btn ativo" data-filter="todos">Todos</button>
+                        <button type="button" class="filtro-btn" data-filter="html">HTML/CSS</button>
+                        <button type="button" class="filtro-btn" data-filter="javascript">JavaScript</button>
+                        <button type="button" class="filtro-btn" data-filter="python">Python</button>
+                    </div>
+                </div>
                 <div id="projeto-container">
-                    <div class="projeto">
+                    <div class="projeto" data-tags="html css">
                         <div class="carrossel">
                             <div class="slides">
                                 <img src="img/Projeto-Tributo.1.png" alt="Imagem projeto Pagina de tributo">
@@ -148,10 +158,10 @@
                                 <summary>Saiba mais...</summary>
                                 <p>Projeto feito para iniciar os primeiros passos com HTML e CSS.</p>
                             </details>
-                            <p>Acesse o código no GitHub. <a href="https://github.com/vitortalianoo/Pagina-de-Tributo" target="_blank">Clique aqui!</a></p>
+                            <p>Acesse o código no GitHub. <a href="https://github.com/vitortalianoo/Pagina-de-Tributo" target="_blank" rel="noopener noreferrer nofollow">Clique aqui!</a></p>
                         </div>
                     </div>
-                    <div class="projeto">
+                    <div class="projeto" data-tags="html css">
                         <div class="carrossel">
                             <div class="slides">
                                 <img src="img/Projeto-Forms.1.png" alt="Imagem projeto Forms">
@@ -169,10 +179,10 @@
                                     com o objetivo de praticar a criação e estilização de formulários. 
                                     É focado apenas no aprendizado da estrutura e layout de formulários web.</p>
                             </details>
-                            <p>Acesse o código no GitHub. <a href="https://github.com/vitortalianoo/formulario_de_venda" target="_blank">Clique aqui!</a></p>
+                            <p>Acesse o código no GitHub. <a href="https://github.com/vitortalianoo/formulario_de_venda" target="_blank" rel="noopener noreferrer nofollow">Clique aqui!</a></p>
                         </div>
                     </div>
-                    <div class="projeto">
+                    <div class="projeto" data-tags="python sqlite">
                         <div class="carrossel">
                             <div class="slides">
                                 <img src="img/Projeto-Crud.1.png" alt="Imagem projeto Python Crud">
@@ -191,10 +201,10 @@
                                 <summary>Saiba mais...</summary>
                                 <p>Aplicação gráfica desenvolvida em Python utilizando Tkinter como interface e SQLite como banco local. O sistema permite cadastrar, listar e excluir usuários de forma prática e validada.</p>
                             </details>
-                            <p>Acesse o código no GitHub. <a href="https://github.com/vitortalianoo/Python_CRUD" target="_blank">Clique aqui!</a></p>
+                            <p>Acesse o código no GitHub. <a href="https://github.com/vitortalianoo/Python_CRUD" target="_blank" rel="noopener noreferrer nofollow">Clique aqui!</a></p>
                         </div>
                     </div>
-                    <div class="projeto">
+                    <div class="projeto" data-tags="html css">
                         <div class="carrossel">
                             <div class="slides">
                                 <img src="img/Projeto-HDC.1.png" alt="Imagem projeto hDC host">
@@ -215,7 +225,7 @@
                                     organização do layout e boas práticas de desenvolvimento front-end.
                                 </p>
                             </details>
-                            <p>Acesse o código no GitHub. <a href="https://github.com/vitortalianoo/hdc-host" target="_blank">Clique aqui!</a></p>
+                            <p>Acesse o código no GitHub. <a href="https://github.com/vitortalianoo/hdc-host" target="_blank" rel="noopener noreferrer nofollow">Clique aqui!</a></p>
                         </div>
                     </div>
                 </div>
@@ -229,6 +239,7 @@
     <footer>
         Portfólio desenvolvido em 2026
     </footer>
+    <button type="button" id="voltar-topo" aria-label="Voltar ao topo"><i class="fa-solid fa-arrow-up"></i></button>
 
     <script src="scripts/scripts.js"></script>
     <script src="scripts/carrossel.js"></script>

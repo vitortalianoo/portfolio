@@ -1,5 +1,6 @@
 const botao = document.getElementById('botao-tema');
 const body = document.body;
+const header = document.querySelector('header');
 
 // Persistência do tema
 const temasalvo = localStorage.getItem('tema');
@@ -16,7 +17,8 @@ function temaEscuro(tipo) {
   }
 }
 
-botao.addEventListener('click', () => {
+botao.addEventListener('click', (e) => {
+  e.preventDefault();
   const isescuro = body.classList.toggle('escuro');
   temaEscuro(isescuro);
   localStorage.setItem('tema', isescuro ? 'escuro' : 'claro');
@@ -29,7 +31,7 @@ navLinks.forEach(link => {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute('href'));
     if (target) {
-      const headerHeight = document.querySelector('header').offsetHeight;
+      const headerHeight = header.offsetHeight;
       const targetPosition = target.offsetTop - headerHeight - 20;
       window.scrollTo({
         top: targetPosition,
@@ -37,4 +39,54 @@ navLinks.forEach(link => {
       });
     }
   });
+});
+
+// Filtro e busca de projetos
+const buscaProjeto = document.getElementById('busca-projeto');
+const filtroBotoes = document.querySelectorAll('.filtro-btn');
+const cardsProjeto = document.querySelectorAll('#projeto-container .projeto');
+let filtroAtivo = 'todos';
+
+function aplicarFiltroProjetos() {
+  const termo = (buscaProjeto?.value || '').trim().toLowerCase();
+
+  cardsProjeto.forEach(card => {
+    const titulo = card.querySelector('.titulo')?.textContent.toLowerCase() || '';
+    const tags = card.dataset.tags || '';
+    const combinaFiltro = filtroAtivo === 'todos' || tags.includes(filtroAtivo);
+    const combinaBusca = titulo.includes(termo);
+    card.style.display = combinaFiltro && combinaBusca ? '' : 'none';
+  });
+}
+
+if (buscaProjeto) {
+  buscaProjeto.addEventListener('input', aplicarFiltroProjetos);
+}
+
+filtroBotoes.forEach(botaoFiltro => {
+  botaoFiltro.addEventListener('click', () => {
+    filtroAtivo = botaoFiltro.dataset.filter || 'todos';
+    filtroBotoes.forEach(btn => btn.classList.remove('ativo'));
+    botaoFiltro.classList.add('ativo');
+    aplicarFiltroProjetos();
+  });
+});
+
+// Botão de voltar ao topo
+const botaoTopo = document.getElementById('voltar-topo');
+function atualizarBotaoTopo() {
+  if (!botaoTopo) return;
+  botaoTopo.classList.toggle('visivel', window.scrollY > 380);
+}
+
+if (botaoTopo) {
+  botaoTopo.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+window.addEventListener('scroll', atualizarBotaoTopo);
+window.addEventListener('load', () => {
+  atualizarBotaoTopo();
+  aplicarFiltroProjetos();
 });
